@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping>
+	<class name="com.rj.auction.product.vo.Product" table="product">
+		<id name="pid">
+			<generator class="native" />
+		</id>
+		<property name="title" />
+		<property name="describes" />
+		<property name="beginTime"  type="java.sql.Timestamp"/>
+		<property name="stopTime"  type="java.sql.Timestamp"/>
+		<property name="price" />
+		<property name="image" />
+		
+		<!-- 配置商品和竞拍记录一对多关系 -->
+		<set name="records" lazy="false" cascade="save-update">
+			<key column="pid"/>
+			<one-to-many class="com.rj.auction.product.vo.Record"/>
+		</set>
+		
+	</class>
+</hibernate-mapping>

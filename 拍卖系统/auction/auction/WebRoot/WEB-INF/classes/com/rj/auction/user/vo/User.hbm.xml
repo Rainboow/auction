@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping>
+	<class name="com.rj.auction.user.vo.User" table="user">
+		<id name="uid">
+			<generator class="native" /> 
+		</id>
+		<property name="name" />
+		<property name="password" />
+		<property name="idNum" />
+		<property name="phone" />
+		<!-- 配置用户和竞拍商品的  一对多关系 -->
+		<set  name="records">
+		 	<key column="uid"/>
+		 	<one-to-many class="com.rj.auction.product.vo.Record"/>
+		</set>
+	</class>
+</hibernate-mapping>
